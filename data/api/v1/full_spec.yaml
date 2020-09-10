@@ -7406,8 +7406,9 @@ components:
           type: number
       type: object
     SyntheticsTestPauseStatus:
-      description: Define whether you want to start (`live`) or pause (`paused`) a
-        Synthetic test.
+      description: The state of the test (whether the test is running or not). This
+        parameter is not available on the edit endpoint. Use the `Pause or start a
+        test` endpoint instead.
       enum:
       - live
       - paused
