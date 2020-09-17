@@ -1878,6 +1878,34 @@ api_v1:
     parent: API V1 overview
     weight: 6
     identifier: rate-limits
+  - name: APM Operation Names
+    url: /api/v1/apm-operation-names/
+    identifier: APM Operation Names
+    generated: true
+  - name: Get all operation names of a service
+    parent: APM Operation Names
+    url: '#get-all-operation-names-of-a-service'
+    generated: true
+  - name: APM Resource Names
+    url: /api/v1/apm-resource-names/
+    identifier: APM Resource Names
+    generated: true
+  - name: Get all resource names of a service
+    parent: APM Resource Names
+    url: '#get-all-resource-names-of-a-service'
+    generated: true
+  - name: APM Services
+    url: /api/v1/apm-services/
+    identifier: APM Services
+    generated: true
+  - name: Get all services for a specified environment
+    parent: APM Services
+    url: '#get-all-services-for-a-specified-environment'
+    generated: true
+  - name: Get all services grouped by environment
+    parent: APM Services
+    url: '#get-all-services-grouped-by-environment'
+    generated: true
   - name: AWS Integration
     url: /api/v1/aws-integration/
     identifier: AWS Integration

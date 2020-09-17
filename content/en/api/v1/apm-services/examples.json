@@ -1,0 +1,71 @@
+{
+  "ListServices": {
+    "responses": {
+      "200": {
+        "json": {
+          "env": "prod",
+          "primary_tag": "availability-zone:us1-west",
+          "service_name": "service-a",
+          "top_level_name": "web.request"
+        },
+        "html": "<div class=\"table-response schema-table has-no-expands row \">\n    <p class=\"expand-all js-expand-all text-primary\">Expand All</p>\n    <div class=\"col-12\">\n      <div class=\"row table-header\">\n        <div class=\"col-4 column\">\n          <p class=\"font-semibold\">Field</p>\n        </div>\n        <div class=\"col-2 column\">\n          <p class=\"font-semibold\">Type</p>\n        </div>\n        <div class=\"col-6 column\">\n          <p class=\"font-semibold\">Description</p>\n        </div>\n      </div>\n      <div class=\"row   \">\n          <div class=\"col-12 first-column\">\n            <div class=\"row first-row  \">\n              <div class=\"col-4 column\">\n      <p class=\"key\">env</p>\n    </div>\n              <div class=\"col-2 column\"><p>string</p></div>\n              <div class=\"col-6 column\"><p>This field contains the environment name.</p></div>\n            </div>\n            \n          </div>\n        </div><div class=\"row   \">\n          <div class=\"col-12 first-column\">\n            <div class=\"row first-row  \">\n              <div class=\"col-4 column\">\n      <p class=\"key\">primary_tag</p>\n    </div>\n              <div class=\"col-2 column\"><p>string</p></div>\n              <div class=\"col-6 column\"><p>This field contains the primary_tag the resource belongs to.</p></div>\n            </div>\n            \n          </div>\n        </div><div class=\"row   \">\n          <div class=\"col-12 first-column\">\n            <div class=\"row first-row  \">\n              <div class=\"col-4 column\">\n      <p class=\"key\">service_name</p>\n    </div>\n              <div class=\"col-2 column\"><p>string</p></div>\n              <div class=\"col-6 column\"><p>This field contains the service name.</p></div>\n            </div>\n            \n          </div>\n        </div><div class=\"row   \">\n          <div class=\"col-12 first-column\">\n            <div class=\"row first-row  \">\n              <div class=\"col-4 column\">\n      <p class=\"key\">top_level_name</p>\n    </div>\n              <div class=\"col-2 column\"><p>string</p></div>\n              <div class=\"col-6 column\"><p>This field contains the top level operation name for this service.</p></div>\n            </div>\n            \n          </div>\n        </div>\n    </div>\n  </div>"
+      },
+      "400": {
+        "json": {
+          "errors": [
+            "Bad Request"
+          ]
+        },
+        "html": "<div class=\"table-response schema-table has-no-expands row \">\n    <p class=\"expand-all js-expand-all text-primary\">Expand All</p>\n    <div class=\"col-12\">\n      <div class=\"row table-header\">\n        <div class=\"col-4 column\">\n          <p class=\"font-semibold\">Field</p>\n        </div>\n        <div class=\"col-2 column\">\n          <p class=\"font-semibold\">Type</p>\n        </div>\n        <div class=\"col-6 column\">\n          <p class=\"font-semibold\">Description</p>\n        </div>\n      </div>\n      <div class=\"row   \">\n          <div class=\"col-12 first-column\">\n            <div class=\"row first-row  \">\n              <div class=\"col-4 column\">\n      <p class=\"key\">errors&nbsp;[<em>required</em>]</p>\n    </div>\n              <div class=\"col-2 column\"><p>[string]</p></div>\n              <div class=\"col-6 column\"><p>Array of errors returned by the API.</p></div>\n            </div>\n            \n          </div>\n        </div>\n    </div>\n  </div>"
+      },
+      "403": {
+        "json": {
+          "errors": [
+            "Bad Request"
+          ]
+        },
+        "html": "<div class=\"table-response schema-table has-no-expands row \">\n    <p class=\"expand-all js-expand-all text-primary\">Expand All</p>\n    <div class=\"col-12\">\n      <div class=\"row table-header\">\n        <div class=\"col-4 column\">\n          <p class=\"font-semibold\">Field</p>\n        </div>\n        <div class=\"col-2 column\">\n          <p class=\"font-semibold\">Type</p>\n        </div>\n        <div class=\"col-6 column\">\n          <p class=\"font-semibold\">Description</p>\n        </div>\n      </div>\n      <div class=\"row   \">\n          <div class=\"col-12 first-column\">\n            <div class=\"row first-row  \">\n              <div class=\"col-4 column\">\n      <p class=\"key\">errors&nbsp;[<em>required</em>]</p>\n    </div>\n              <div class=\"col-2 column\"><p>[string]</p></div>\n              <div class=\"col-6 column\"><p>Array of errors returned by the API.</p></div>\n            </div>\n            \n          </div>\n        </div>\n    </div>\n  </div>"
+      }
+    },
+    "request": {
+      "json_curl": {},
+      "json": {},
+      "html": ""
+    }
+  },
+  "ListServicesByEnv": {
+    "responses": {
+      "200": {
+        "json": {
+          "prod": [
+            "service-a",
+            "service-b"
+          ],
+          "staging": []
+        },
+        "html": "<div class=\"table-response schema-table has-no-expands row \">\n    <p class=\"expand-all js-expand-all text-primary\">Expand All</p>\n    <div class=\"col-12\">\n      <div class=\"row table-header\">\n        <div class=\"col-4 column\">\n          <p class=\"font-semibold\">Field</p>\n        </div>\n        <div class=\"col-2 column\">\n          <p class=\"font-semibold\">Type</p>\n        </div>\n        <div class=\"col-6 column\">\n          <p class=\"font-semibold\">Description</p>\n        </div>\n      </div>\n      <div class=\"row   \">\n          <div class=\"col-12 first-column\">\n            <div class=\"row first-row  \">\n              <div class=\"col-4 column\">\n      <p class=\"key\">&lt;any-key&gt;</p>\n    </div>\n              <div class=\"col-2 column\"><p>[string]</p></div>\n              <div class=\"col-6 column\"><p>A list of service names.</p></div>\n            </div>\n            \n          </div>\n        </div>\n    </div>\n  </div>"
+      },
+      "400": {
+        "json": {
+          "errors": [
+            "Bad Request"
+          ]
+        },
+        "html": "<div class=\"table-response schema-table has-no-expands row \">\n    <p class=\"expand-all js-expand-all text-primary\">Expand All</p>\n    <div class=\"col-12\">\n      <div class=\"row table-header\">\n        <div class=\"col-4 column\">\n          <p class=\"font-semibold\">Field</p>\n        </div>\n        <div class=\"col-2 column\">\n          <p class=\"font-semibold\">Type</p>\n        </div>\n        <div class=\"col-6 column\">\n          <p class=\"font-semibold\">Description</p>\n        </div>\n      </div>\n      <div class=\"row   \">\n          <div class=\"col-12 first-column\">\n            <div class=\"row first-row  \">\n              <div class=\"col-4 column\">\n      <p class=\"key\">errors&nbsp;[<em>required</em>]</p>\n    </div>\n              <div class=\"col-2 column\"><p>[string]</p></div>\n              <div class=\"col-6 column\"><p>Array of errors returned by the API.</p></div>\n            </div>\n            \n          </div>\n        </div>\n    </div>\n  </div>"
+      },
+      "403": {
+        "json": {
+          "errors": [
+            "Bad Request"
+          ]
+        },
+        "html": "<div class=\"table-response schema-table has-no-expands row \">\n    <p class=\"expand-all js-expand-all text-primary\">Expand All</p>\n    <div class=\"col-12\">\n      <div class=\"row table-header\">\n        <div class=\"col-4 column\">\n          <p class=\"font-semibold\">Field</p>\n        </div>\n        <div class=\"col-2 column\">\n          <p class=\"font-semibold\">Type</p>\n        </div>\n        <div class=\"col-6 column\">\n          <p class=\"font-semibold\">Description</p>\n        </div>\n      </div>\n      <div class=\"row   \">\n          <div class=\"col-12 first-column\">\n            <div class=\"row first-row  \">\n              <div class=\"col-4 column\">\n      <p class=\"key\">errors&nbsp;[<em>required</em>]</p>\n    </div>\n              <div class=\"col-2 column\"><p>[string]</p></div>\n              <div class=\"col-6 column\"><p>Array of errors returned by the API.</p></div>\n            </div>\n            \n          </div>\n        </div>\n    </div>\n  </div>"
+      }
+    },
+    "request": {
+      "json_curl": {},
+      "json": {},
+      "html": ""
+    }
+  }
+}

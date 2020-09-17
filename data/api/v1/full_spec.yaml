@@ -16159,6 +16159,281 @@ paths:
       tags:
       - Tags
       x-codegen-request-body-name: body
+  /api/v1/trace/operation_names/{service}:
+    get:
+      description: Get all operation names for a service, in a specific environment
+        and timeframe.
+      operationId: GetOperationNames
+      parameters:
+      - description: The name of the service go get operation names for.
+        in: path
+        name: service
+        required: true
+        schema:
+          example: service-c
+          type: string
+      - description: Specify what APM environment to query operations by.
+        in: query
+        name: env
+        required: true
+        schema:
+          example: prod
+          type: string
+      - description: Specify the start of the timeframe in epoch seconds to query
+          for. (defaults to 1 hour before end parameter)
+        in: query
+        name: from
+        required: false
+        schema:
+          example: 1588784247
+          format: int64
+          type: integer
+      - description: Specify the end of the timeframe in epoch seconds to query for.
+          (defaults to current time)
+        in: query
+        name: to
+        required: false
+        schema:
+          example: 1588794247
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                description: An object with a list of operations.
+                example: "{\"operation_names\": [\n  {\"type\": \"top_level_name\"\
+                  , \"name\": \"web.request\", \"service\": \"service-a\"},\n  {\"\
+                  type\": \"regular\", \"name\": \"web.query\", \"service\": \"service-a\"\
+                  }\n]}"
+                properties:
+                  operation_names:
+                    items:
+                      properties:
+                        name:
+                          description: This field holds the operation name.
+                          example: web.request
+                          type: string
+                        service:
+                          description: This field holds the service the operation
+                            name belongs to.
+                          example: service-a
+                          type: string
+                        type:
+                          description: This describes whether the operation is a top
+                            level operation or not.
+                          example: top_level_name
+                          type: string
+                      type: object
+                    type: array
+                type: object
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+          description: Bad Request
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+          description: Authentication Error
+      summary: Get all operation names of a service
+      tags:
+      - APM Operation Names
+      x-unstable: '**Note: This endpoint is in public beta. If you have any feedback,
+
+        contact [Datadog support](https://docs.datadoghq.com/help/).**'
+  /api/v1/trace/resources:
+    get:
+      description: Get all resource names for a service, in a specific environment
+        and timeframe.
+      operationId: GetResourceNames
+      parameters:
+      - description: The name of the service go get resource names for.
+        in: query
+        name: service
+        required: true
+        schema:
+          example: service-c
+          type: string
+      - description: The name of the operation to get resources for.
+        in: query
+        name: name
+        required: true
+        schema:
+          example: service-c
+          type: string
+      - description: Specify what APM environment to query resources by.
+        in: query
+        name: env
+        required: true
+        schema:
+          example: prod
+          type: string
+      - description: Specify the start of the timeframe in epoch seconds to query
+          for. (defaults to 1 hour before end parameter)
+        in: query
+        name: from
+        required: false
+        schema:
+          example: 1588784247
+          format: int64
+          type: integer
+      - description: Specify the end of the timeframe in epoch seconds to query for.
+          (defaults to current time)
+        in: query
+        name: to
+        required: false
+        schema:
+          example: 1588794247
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                description: A list of resource objects.
+                example: "[\n  {\"top_level_name\": \"web.request\", \"hash\": \"\
+                  ab123\", \"name\": \"GET /widgets\", \"service\": \"service-a\"\
+                  },\n  {\"top_level_name\": \"web.request\", \"hash\": \"def456\"\
+                  , \"name\": \"POST /widgets/?\", \"service\": \"service-a\"}\n]"
+                items:
+                  properties:
+                    hash:
+                      description: This field contains the resource hash that identifies
+                        this resource.
+                      example: abc123
+                      type: string
+                    name:
+                      description: This field contains the resource name.
+                      example: web.request
+                      type: string
+                    service:
+                      description: This field contains the service the resource belongs
+                        to.
+                      example: service-a
+                      type: string
+                    top_level_name:
+                      description: This field contains the top level operation name
+                        for this resource.
+                      example: web.request
+                      type: string
+                  type: object
+                type: array
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+          description: Bad Request
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+          description: Authentication Error
+      summary: Get all resource names of a service
+      tags:
+      - APM Resource Names
+      x-unstable: '**Note: This endpoint is in public beta. If you have any feedback,
+
+        contact [Datadog support](https://docs.datadoghq.com/help/).**'
+  /api/v1/trace/services:
+    get:
+      description: Get all APM environments and their respective services reporting
+        in the given timeframe.
+      operationId: ListServices
+      parameters:
+      - description: Specify what APM environment to query services by.
+        in: query
+        name: env
+        required: true
+        schema:
+          example: prod
+          type: string
+      - description: Specify what APM primary tag and value to query services by.
+        in: query
+        name: primary_tag
+        required: false
+        schema:
+          example: availability-zone:us1-east
+          type: string
+      - description: Specify the start of the timeframe in epoch seconds to query
+          for. (defaults to 1 hour before end parameter)
+        in: query
+        name: from
+        required: false
+        schema:
+          example: 1588784247
+          format: int64
+          type: integer
+      - description: Specify the end of the timeframe in epoch seconds to query for.
+          (defaults to current time)
+        in: query
+        name: to
+        required: false
+        schema:
+          example: 1588794247
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                description: A list of objects with information about queried services.
+                example: "[\n  {\"top_level_name\": \"web.request\", \"service_name\"\
+                  : \"service-a\", \"env\": \"prod\", \"primary_tag\": \"availability-zone:us1-west\"\
+                  },\n  {\"top_level_name\": \"web.request\", \"service_name\": \"\
+                  service-b\", \"env\": \"prod\", \"primary_tag\": \"availability-zone:us1-east\"\
+                  }\n]"
+                items:
+                  properties:
+                    env:
+                      description: This field contains the environment name.
+                      example: prod
+                      type: string
+                    primary_tag:
+                      description: This field contains the primary_tag the resource
+                        belongs to.
+                      example: availability-zone:us1-west
+                      type: string
+                    service_name:
+                      description: This field contains the service name.
+                      example: service-a
+                      type: string
+                    top_level_name:
+                      description: This field contains the top level operation name
+                        for this service.
+                      example: web.request
+                      type: string
+                  type: object
+                type: array
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+          description: Bad Request
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+          description: Authentication Error
+      summary: Get all services for a specified environment
+      tags:
+      - APM Services
+      x-unstable: '**Note: This endpoint is in public beta. If you have any feedback,
+
+        contact [Datadog support](https://docs.datadoghq.com/help/).**'
   /api/v1/usage/analyzed_logs:
     get:
       description: Get hourly usage for analyzed logs (Security Monitoring).
@@ -17297,6 +17572,71 @@ paths:
       tags:
       - Monitors
       x-codegen-request-body-name: body
+  /trace/api/services_by_env:
+    get:
+      description: Get all APM environments and their respective services reporting
+        in the given timeframe.
+      operationId: ListServicesByEnv
+      parameters:
+      - description: Specify the start of the timeframe in epoch seconds to query
+          for. (defaults to 1 hour before end parameter)
+        in: query
+        name: from
+        required: false
+        schema:
+          example: 1588784247
+          format: int64
+          type: integer
+      - description: Specify the end of the timeframe in epoch seconds to query for.
+          (defaults to current time)
+        in: query
+        name: to
+        required: false
+        schema:
+          example: 1588794247
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  description: A list of service names.
+                  example:
+                  - service-a
+                  - service-b
+                  items:
+                    description: Service names.
+                    type: string
+                  type: array
+                description: An object containing environments as keys and a list
+                  of services as the values.
+                example:
+                  prod:
+                  - service-a
+                  - service-b
+                  staging: []
+                type: object
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+          description: Bad Request
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+          description: Authentication Error
+      summary: Get all services grouped by environment
+      tags:
+      - APM Services
+      x-unstable: '**Note: This endpoint is in public beta. If you have any feedback,
+
+        contact [Datadog support](https://docs.datadoghq.com/help/).**'
   /v0.3/traces:
     put:
       description: "Datadog\u2019s APM allows you to collect performance metrics by\
@@ -17563,6 +17903,12 @@ servers:
       default: https
       description: The protocol for accessing the API.
 tags:
+- description: APM operation names are the names of the operation for that span.
+  name: APM Operation Names
+- description: APM resource names are usually the endpoints in a service.
+  name: APM Resource Names
+- description: APM Services are ways of grouping code for monitoring.
+  name: APM Services
 - description: 'Configure your Datadog-AWS integration directly through the Datadog
     API.
 
