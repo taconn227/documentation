@@ -17070,7 +17070,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/APIErrorResponse'
           description: Authentication error
-      summary: Get all users
+      summary: List all users
       tags:
       - Users
     post:
